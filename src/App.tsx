@@ -6,6 +6,7 @@ import Projects from "./components/Projects/Projects";
 import Contacts from "./components/Contact";
 import Footer from "./components/Footer";
 import { useReveal } from "./hooks/useReveal";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   useReveal();
@@ -21,6 +22,7 @@ function App() {
         <Contacts />
       </main>
       <Footer />
+      <SpeedInsights />
     </>
   );
 }
