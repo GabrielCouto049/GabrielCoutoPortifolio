@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Rubik";
+  src: url("../assets/fonts/Rubik-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("../assets/fonts/DMSans-VariableFont_opsz,wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--color-accent-200);
+  color: var(--color-base-950);
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --gradient-accent-strong-from: var(--color-accent-500);
+    --gradient-accent-strong-to: var(--color-accent-600);
+    --gradient-accent-soft-from: var(--color-accent-400);
+    --gradient-accent-soft-to: var(--color-accent-500);
+  }
+
+  .dark {
+    color-scheme: dark;
+    --gradient-accent-strong-from: var(--color-accent-400);
+    --gradient-accent-strong-to: var(--color-accent-500);
+    --gradient-accent-soft-from: var(--color-accent-500);
+    --gradient-accent-soft-to: var(--color-accent-600);
+  }
+
+  body {
+    @apply bg-base-50 text-base-950 dark:bg-base-950 dark:text-base-100 antialiased;
+  }
+}
+
+@theme {
+  /* Tipografia */
+  --font-base: "DM Sans", sans-serif;
+  --font-heading: "Rubik", sans-serif;
+
+  /* Cores neutras */
+  --color-base-50: oklch(98.5% 0.003 330);
+  --color-base-100: oklch(96% 0.005 330);
+  --color-base-200: oklch(92% 0.007 330);
+  --color-base-300: oklch(85.5% 0.009 330);
+  --color-base-400: oklch(73.5% 0.011 330);
+  --color-base-500: oklch(63.5% 0.013 330);
+  --color-base-600: oklch(53.5% 0.014 330);
+  --color-base-700: oklch(44% 0.013 330);
+  --color-base-800: oklch(34.5% 0.011 330);
+  --color-base-900: oklch(27% 0.009 330);
+  --color-base-950: oklch(19% 0.008 330);
+
+  /* Cor de destaque */
+  --color-accent-50: oklch(97.5% 0.018 155);
+  --color-accent-100: oklch(94.5% 0.04 155);
+  --color-accent-200: oklch(89% 0.075 155);
+  --color-accent-300: oklch(82% 0.12 155);
+  --color-accent-400: oklch(70.5% 0.17 155);
+  --color-accent-500: oklch(59% 0.19 155);
+  --color-accent-600: oklch(51.5% 0.18 155);
+  --color-accent-700: oklch(44% 0.16 155);
+  --color-accent-800: oklch(37.5% 0.135 155);
+  --color-accent-900: oklch(31% 0.105 155);
+  --color-accent-950: oklch(23.5% 0.075 155);
+
+  /* Espaçamentos semânticos */
+  --spacing-icon-text: calc(var(--spacing) * 2);
+  --spacing-list-item: calc(var(--spacing) * 3);
+  --spacing-actions: calc(var(--spacing) * 3);
+  --spacing-field: calc(var(--spacing) * 4);
+  --spacing-field-label: calc(var(--spacing) * 2);
+  --spacing-grid-compact: calc(var(--spacing) * 4);
+  --spacing-grid-default: calc(var(--spacing) * 6);
+  --spacing-grid-spacious: calc(var(--spacing) * 8);
+  --spacing-title-content: calc(var(--spacing) * 8);
+  --spacing-heading-content: calc(var(--spacing) * 3);
+  --spacing-card: calc(var(--spacing) * 6);
+  --spacing-button-x: calc(var(--spacing) * 6);
+}
+
+@utility gradient-accent-strong {
+  background-image: linear-gradient(
+    180deg,
+    var(--gradient-accent-strong-from),
+    var(--gradient-accent-strong-to)
+  );
+}
+
+@utility gradient-accent-soft {
+  background-image: linear-gradient(
+    180deg,
+    var(--gradient-accent-soft-from),
+    var(--gradient-accent-soft-to)
+  );
+}
+
+@utility text-gradient-accent-strong {
+  background-image: linear-gradient(
+    180deg,
+    var(--gradient-accent-strong-from),
+    var(--gradient-accent-strong-to)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-accent-soft {
+  background-image: linear-gradient(
+    180deg,
+    var(--gradient-accent-soft-from),
+    var(--gradient-accent-soft-to)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .section {
+    @apply scroll-mt-14 py-16 sm:scroll-mt-16 sm:py-20 lg:py-24;
+  }
+
+  .heading-1 {
+    @apply font-heading text-[clamp(2.25rem,12vw,6rem)] leading-none font-semibold tracking-[-0.02em] text-balance;
+  }
+
+  .heading-2 {
+    @apply font-heading text-[clamp(1.75rem,4vw,2.5rem)] leading-[1.1] font-semibold tracking-[-0.01em] text-balance;
+  }
+
+  .heading-3 {
+    @apply font-heading text-[clamp(1.05rem,2vw,1.25rem)] leading-tight font-medium;
+  }
+
+  .heading-4 {
+    @apply font-heading text-[clamp(0.95rem,1.6vw,1.125rem)] leading-tight font-medium tracking-wider;
+  }
+
+  .subheading {
+    @apply font-heading text-[clamp(0.65rem,1.2vw,0.75rem)] leading-none font-medium tracking-[0.08em] uppercase;
+  }
+
+  .paragraph-1 {
+    @apply font-base text-[clamp(1rem,1.5vw,1.125rem)] leading-normal tracking-[0.01em] text-pretty;
+  }
+
+  .paragraph-2 {
+    @apply font-base text-[clamp(0.875rem,1.2vw,1rem)] leading-relaxed tracking-[0.01em] text-pretty;
+  }
+
+  .paragraph-3 {
+    @apply font-base text-[clamp(0.75rem,1vw,0.875rem)] leading-relaxed tracking-[0.01em] text-pretty;
+  }
+
+  .link {
+    @apply font-base hover:text-accent-700 focus-visible:outline-accent-500 dark:hover:text-accent-400 dark:focus-visible:outline-accent-400 text-sm leading-relaxed font-medium tracking-[0.01em] underline-offset-4 transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2;
+  }
+}
+
+@layer utilities {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition:
+      opacity 600ms ease,
+      transform 600ms ease;
+  }
+
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
